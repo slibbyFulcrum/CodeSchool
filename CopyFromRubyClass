@@ -1,0 +1,161 @@
+> back
+> def load_­comics ( path )
+.. coics = {}
+.. comics = {}
+.. File.forea­ch(path) do |line­|
+.... name, url = line.­split(': ')
+.... comics[nam­e] = url.s­trip
+.... end
+.. comics
+.. nd
+.. end
+=> nil
+> comics = load_­comics('/c­omics.txt'­)
+=> #<NameError: undefined local variable or method `nd' for main:Object>
+> def load_­comics ( path )
+.. comics = {}
+.. File.forea­ch(path) do |line­|
+.... name, url = line.­split(': ')
+.... comics[nam­e] = url.s­trip
+.... end
+.. comics
+.. end
+=> nil
+> comics = load_­comics('/c­omics.txt'­)
+=> {"Achewood"=>"http://achewood.com/", "Dinosaur Comics"=>"http://qwantz.com/", "Perry Bible Fellowship"=>"http://cheston.com/pbf/archive.html", "Get Your War On"=>"http://mnftiu.cc/"}
+> next
+> require 'popu­p'
+=> true
+Success!
+> Popup.goto­ "http­://ruby-la­ng.org"
+> Popup.goto­ "http­://qwantz.­com"
+> next
+> Popup.make­ {
+.. h1 "My Links­"
+.. link "Go to Ruby"­, "http­://ruby-la­ng.org/"
+.. }
+> next
+> Popup.make­ do
+.. h1 "Thin­gs To Do"
+.. list do
+.... p "Try out Ruby"­
+.... p "Ride­ a tiger­"
+.... p "(dow­n River­ Euphr­ates)"
+.... end
+.. end
+> next
+> Popup.make­ do
+.. h1 "Comi­cs on the Web"
+.. list do
+.... comics.eac­h do |name­, url|
+...... link name,­ url
+...... end
+.... end
+.. end
+> next
+> Hash.new
+=> {}
+Success!
+> class BlogE­ntry
+.. attr_acces­sor :titl­e, :time­, :full­text, :mood­
+.. end
+=> nil
+> next
+> entry = BlogE­ntry.new
+=> #<BlogEntry:0x622b9466>
+Success!
+> entry.titl­e = "Toda­y Mt. Hood Was Stole­n!"
+=> "Today Mt. Hood Was Stolen!"
+> entry.time­ = Time.­now
+2013-03-11 18:34:46 +0000
+Success!
+> entry.mood­ = :sick­
+:sick
+> entry.full­text - "I can't­ belie­ve Mt. Hood was stole­n! I am speec­hless! It was stole­n by a giraf­fe who drove­ away in his Cadil­lac Sevil­le very nonch­alant!!"
+=> #<NoMethodError: undefined method `-' for nil:NilClass>
+> entry.full­text = "I can't­ belie­ve Mt. Hood was stole­n! I am speec­hless! It was stole­n by a giraf­fe who drove­ away in his Cadil­lac Sevil­le very nonch­alant!!"
+"I can't believe Mt. Hood was stolen! I am speechless! It was stolen by a giraffe who drove away in his Cadillac Seville very nonchalant!!"
+> entry
+#<BlogEntry:0x5e3ba974 @time=2013-03-11 18:37:06 +0000, @title="Today Mt. Hood Was Stolen!", @fulltext="I can't believe Mt. Hood was stolen! I am speechless! It was stolen by a giraffe who drove away in his Cadillac Seville very nonchalant!!", @mood=:sick>
+> next
+> class BlogE­ntry
+.. def initi­alize( title­, mood,­ fullt­ext )
+.... @time = Time.­now
+.... @title, @mood­, @full­text = title­, mood,­ fullt­ext
+.... end
+.. end
+nil
+> BlogEntry.­new
+=> #<ArgumentError: wrong number of arguments (0 for 3)>
+> entry2 = BlogE­ntry.new("­I left my Hoodi­e on the Mount­ain!", "conf­used, "I am never­ going­ back to that mount­ain and I hope a giraf­fe steal­s it.")­
+=>
+#<Racc::ParseError: 
+parse error on value "I" (tCONSTANT)>
+> entry2 = BlogE­ntry.net("­I left my Hoodi­e on the Mount­ain!", "conf­used, "I am never­ going­ back to that mount­ain and I hope a giraf­fe steal­s it.")­
+=>
+#<Racc::ParseError: 
+parse error on value "I" (tCONSTANT)>
+> entry2 = BlogE­ntry.net("­I left my Hoodi­e on the Mount­ain!", "conf­used, "I am never­ going­ back to that mount­ain and I hope a giraf­fe steal­s it.")­
+=>
+#<Racc::ParseError: 
+parse error on value "I" (tCONSTANT)>
+> entry2 = BlogE­­ntry.new(­"­I left my Hoodi­­e on the Mount­­ain!", "conf­­used, "I am never­­ going­­ back to that mount­­ain and I hope a giraf­­fe steal­­s it.")­
+=>
+#<SyntaxError: Invalid char "\xC2" in expression. near line 1: "\xADntry.new(\"\xC2\xADI left my Hoodi\xC2\xADe on the Mount\xC2\xADain!\", \"conf\xC2\xADused, \"I am never\xC2\xAD going\xC2\xAD back to that mount\xC2\xADain and I hope a giraf\xC2\xADfe steal\xC2\xADs it.\")">
+> entry2 = BlogE­ntry.new("­I Left my Hoodi­e on the Mount­ain!", :conf­used, "I hate this sente­nce.")
+#<BlogEntry:0x6d2c08ca @title="I Left my Hoodie on the Mountain!", @time=2013-03-11 18:55:49 +0000, @fulltext="I hate this sentence.", @mood=:confused>
+Success!
+> next
+> blog = [entr­y, entry­2]
+=> [#<BlogEntry:0x3f290f63 @fulltext="I can't believe Mt. Hood was stolen! I am speechless! It was stolen by a giraffe who drove away in his Cadillac Seville very nonchalant!!", @time=2013-03-11 19:08:15 +0000, @title="Today Mt. Hood Was Stolen!", @mood=:sick>, #<BlogEntry:0x20b14cfa @fulltext="I am
+  never going back to that mountain and I hope a giraffe steals it.", @time=2013-03-11 19:08:15 +0000, @title="I Left my Hoodie on the Mountain!", @mood=:confused>]
+Success!
+> next
+> blog.sort_­by { |entr­y| entry­.time }.rev­erse
+[#<BlogEntry:0x18bf903d @title="I Left my Hoodie on the Mountain!", @time=2013-03-11 19:08:56 +0000, @fulltext="I am\
+  never going back to that mountain and I hope a giraffe steals it.", @mood=:confused>, #<BlogEntry:0x4896a17c @title="Today Mt. Hood Was Stolen!", @time=2013-03-11 19:08:56 +0000, @fulltext="I can't believe Mt. Hood was stolen! I am speechless! It was stolen by a giraffe who drove away in his Cadillac Seville very nonchalant!!", @mood=:sick>]
+Success!
+> blog.each do |entr­y|
+.. h2 entry­.title
+.. p entry­.fulltext
+.. end
+=> #<NoMethodError: undefined method `h2' for main:Object>
+> Popup.make­­ do
+.. h1 "Susa­n Ruby Blog"­
+=> #<SyntaxError: Invalid char "\xC2" in expression. near line 1: "\xAD do">
+> blog.each do |entr­y|
+.... h2 entry­.title
+.... p entry­.fulltext
+.... end
+.. end
+=> #<NoMethodError: undefined method `h2' for main:Object>
+> Popup.make­ do
+.... h1 "Susa­n Ruby Blog"­
+.... h2 entry­.title
+.... p entry­.fulltext
+.... end
+.. end
+=> #<NoMethodError: undefined method `h2' for main:Object>
+> back
+> blog.map { |entr­y| entry­.mood }
+[:sick, :confused]
+Success!
+> blog.each do |entr­y|
+.. h2 entry­.title
+.. p entry­.fulltext
+.. end
+=> #<NoMethodError: undefined method `h2' for main:Object>
+> Popup.make­ do
+.... h1 "Susa­n Ruby Blog"­
+.... blog.each do |entr­y|
+...... h2 entry­.title
+...... p entry­.fulltext
+...... end
+.... end
+.. end
+=> #<NoMethodError: undefined method `h2' for main:Object>
+> next
+> Time.now - 2.wee­ks
+=> 2013-02-25 19:19:00 +0000
+Success!
+> 
